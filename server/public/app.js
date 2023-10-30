@@ -7,6 +7,7 @@ const activity = document.querySelector('.activity')
 const usersList = document.querySelector('.user-list')
 const roomList = document.querySelector('.room-list')
 const chatDisplay = document.querySelector('.chat-display')
+import 'emoji-picker-element';//might delete this
 
 function sendMessage(e) {
     e.preventDefault()

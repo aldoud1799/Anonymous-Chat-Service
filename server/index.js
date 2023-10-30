@@ -9,6 +9,10 @@ const __dirname = path.dirname(__filename)
 const PORT = process.env.PORT || 3500
 const ADMIN = "Admin"
 
+//might delete this
+const emojiPicker = document.querySelector('emoji-picker');
+const msgInput = document.querySelector('#message');
+
 const app = express()
 
 app.use(express.static(path.join(__dirname, "public")))
@@ -103,6 +107,11 @@ io.on('connection', socket => {
             io.to(room).emit('message', buildMsg(name, text))
         }
     })
+    //might delete this
+    emojiPicker.addEventListener('emoji-click', (event) => {
+        const emoji = event.detail.unicode;
+        msgInput.value += emoji;
+      });
 
     // Listen for activity 
     socket.on('activity', (name) => {
