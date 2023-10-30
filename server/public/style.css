@@ -121,3 +121,10 @@ button {
 .activity {
     font-style: italic;
 }
+
+emoji-picker {
+    position: absolute;
+    bottom: 50px;
+    right: 10px;
+    z-index: 1;
+  }

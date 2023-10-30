@@ -7,7 +7,13 @@ const activity = document.querySelector('.activity')
 const usersList = document.querySelector('.user-list')
 const roomList = document.querySelector('.room-list')
 const chatDisplay = document.querySelector('.chat-display')
-import 'emoji-picker-element';//might delete this
+
+//might delete this
+const emojiPicker = document.querySelector('emoji-picker');
+const submitBtn = document.querySelector('#submit');
+
+
+
 
 function sendMessage(e) {
     e.preventDefault()
@@ -65,6 +71,12 @@ socket.on("message", (data) => {
 
     chatDisplay.scrollTop = chatDisplay.scrollHeight
 })
+submitBtn.addEventListener('click', () => {
+    const message = msgInput.value;
+    const emoji = emojiPicker.value;
+    socket.emit('sendMessage', { message, emoji });
+    msgInput.value = '';
+  });
 
 let activityTimer
 socket.on("activity", (name) => {
