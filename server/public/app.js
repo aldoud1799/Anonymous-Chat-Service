@@ -1,4 +1,4 @@
-const socket = io('https://rt-chat-app.onrender.com')
+const socket = io('https://rt-chat-app.onrender.com', 'http://localhost:3500')
 
 const msgInput = document.querySelector('#message')
 const nameInput = document.querySelector('#name')
