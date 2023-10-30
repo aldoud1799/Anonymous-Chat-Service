@@ -2,7 +2,7 @@ import express from 'express'
 import { Server } from "socket.io"
 import path from 'path'
 import { fileURLToPath } from 'url'
-import 'emoji-picker-element';//might delete this
+
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -10,9 +10,6 @@ const __dirname = path.dirname(__filename)
 const PORT = process.env.PORT || 3500
 const ADMIN = "Admin"
 
-//might delete this
-const emojiPicker = document.querySelector('emoji-picker');
-const msgInput = document.querySelector('#message');
 
 const app = express()
 
@@ -108,12 +105,7 @@ io.on('connection', socket => {
             io.to(room).emit('message', buildMsg(name, text))
         }
     })
-    //might delete this
-    emojiPicker.addEventListener('emoji-click', (event) => {
-        const emoji = event.detail.unicode;
-        msgInput.value += emoji;
-      });
-
+    
     // Listen for activity 
     socket.on('activity', (name) => {
         const room = getUser(socket.id)?.room
